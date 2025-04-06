@@ -36,6 +36,12 @@
             margin-bottom: 20px;
         }
         
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
         .title {
             font-size: 2.5rem;
             font-weight: bold;
@@ -63,6 +69,12 @@
         .score-value {
             font-size: 1.5rem;
             font-weight: bold;
+        }
+        
+        #always-restart-button {
+            margin-right: 10px;
+            padding: 8px 15px;
+            font-size: 1rem;
         }
         
         .game-intro {
@@ -219,20 +231,28 @@
             .grid {
                 grid-gap: 10px;
             }
+            
+            #always-restart-button {
+                padding: 5px 10px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="title">2048</div>
-        <div class="scores">
-            <div class="score-box">
-                <span class="score-title">分数</span>
-                <span class="score-value" id="score">0</span>
-            </div>
-            <div class="score-box">
-                <span class="score-title">最高分</span>
-                <span class="score-value" id="best-score">0</span>
+        <div class="header-right">
+            <button class="restart-button" id="always-restart-button">重新开始</button>
+            <div class="scores">
+                <div class="score-box">
+                    <span class="score-title">分数</span>
+                    <span class="score-value" id="score">0</span>
+                </div>
+                <div class="score-box">
+                    <span class="score-title">最高分</span>
+                    <span class="score-value" id="best-score">0</span>
+                </div>
             </div>
         </div>
     </div>
@@ -258,6 +278,7 @@
             const bestScoreElement = document.getElementById('best-score');
             const gameOverElement = document.getElementById('game-over');
             const restartButton = document.getElementById('restart-button');
+            const alwaysRestartButton = document.getElementById('always-restart-button');
             
             let grid = [];
             let score = 0;
@@ -659,6 +680,7 @@
             
             // 重新开始游戏
             restartButton.addEventListener('click', initGame);
+            alwaysRestartButton.addEventListener('click', initGame);
             
             // 初始化游戏
             initGame();
